@@ -1,10 +1,7 @@
 library(rstan)
 library(dplyr)
 
-#These data contain complete records >5 DBH, for almost all species.
-#There were a few species that only had 1 or 2 records in the database and I removed these.
-#This also contains both actual values and numerical indices (i.e., 1....N) for Jenkins species groups,
-#Chojnacky species groups, and species for all observations
+#These data contain complete records for 99 species. 
 #The data have previously been converted to metric units (dbh (cm), mass (kg))
 data <- read.csv("foliage_legacy_data.csv")
 data <- subset(data, DW_FOL>0 & DBH>0)   #Removing a half dozen records with zeros, since log-transforming these will send Stan haywire. 
